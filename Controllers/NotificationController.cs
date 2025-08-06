@@ -16,16 +16,17 @@ namespace NotificationBackend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetNotifications()
+        public async Task<IActionResult> GetNotifications()
         {
-            return Ok(_notificationService.GetAllNotifications());
+            var notifications = await _notificationService.GetAllNotificationsAsync();
+            return Ok(notifications);
         }
 
         [HttpPost]
-        public IActionResult AddNotification([FromBody] Notification notification)
+        public async Task<IActionResult> AddNotification([FromBody] Notification notification)
         {
-            _notificationService.AddNotification(notification);
-            return CreatedAtAction(nameof(GetNotifications), notification);
+            await _notificationService.AddNotificationAsync(notification);
+            return CreatedAtAction(nameof(GetNotifications), new { }, notification);
         }
     }
 }

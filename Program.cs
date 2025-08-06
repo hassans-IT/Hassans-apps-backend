@@ -1,7 +1,13 @@
 using NotificationBackend.Hubs;
 using NotificationBackend.Services;
+using NotificationBackend.Data; // <-- Add this
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// ✅ Add EF Core SQL Server support
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add CORS policy
 builder.Services.AddCors(options =>
@@ -9,21 +15,19 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy
-            .WithOrigins("http://localhost:3000") // Replace with your frontend's URL
+            .WithOrigins("http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .AllowCredentials(); // Required for SignalR
+            .AllowCredentials();
     });
 });
 
-// Add services to the container
-builder.Services.AddSingleton<NotificationService>();
-builder.Services.AddSignalR(); // Add SignalR
+builder.Services.AddScoped<NotificationService>();
+builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -39,11 +43,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowAll"); // Apply the CORS policy
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<NotificationHub>("/notificationHub"); // Map the SignalR hub
+app.MapHub<NotificationHub>("/notificationHub");
 
 app.Run();
