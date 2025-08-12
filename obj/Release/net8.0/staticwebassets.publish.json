@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yYIIFoTYXePl2RW5PealwHamKRadvDB3+aGc5TuQM5M=",
+  "Source": "NotificationBackend",
+  "BasePath": "_content/NotificationBackend",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

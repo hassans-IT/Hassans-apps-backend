@@ -22,7 +22,9 @@ namespace NotificationBackend.Services
 
         public async Task<IEnumerable<Notification>> GetAllNotificationsAsync()
         {
+            var sixMonthsAgo = DateTime.Now.AddMonths(-6); // Calculate the date 6 months ago
             return await _context.Notifications
+                .Where(n => n.CreatedAt >= sixMonthsAgo) // Filter notifications created within the last 6 months
                 .OrderByDescending(n => n.CreatedAt)
                 .ToListAsync();
         }
@@ -35,6 +37,37 @@ namespace NotificationBackend.Services
             await _context.SaveChangesAsync();
 
             await _hubContext.Clients.All.SendAsync("ReceiveNotification", notification);
+        }
+
+        public async Task<bool> DeleteNotificationAsync(int id)
+        {
+            var notification = await _context.Notifications.FindAsync(id);
+            if (notification == null)
+            {
+                return false; // Notification not found
+            }
+
+            _context.Notifications.Remove(notification);
+            await _context.SaveChangesAsync();
+            Console.WriteLine($"Notification with Id: {id} deleted successfully");
+            return true;
+        }
+
+        public async Task<bool> UpdateNotificationAsync(int id, Notification updatedNotification)
+        {
+            var notification = await _context.Notifications.FindAsync(id);
+            if (notification == null)
+            {
+                return false; // Notification not found
+            }
+
+            notification.Title = updatedNotification.Title;
+            notification.Message = updatedNotification.Message;
+            notification.StartDate = updatedNotification.StartDate;
+            notification.EndDate = updatedNotification.EndDate;
+
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }
