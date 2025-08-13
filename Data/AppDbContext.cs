@@ -10,5 +10,7 @@ namespace NotificationBackend.Data
         }
 
         public DbSet<Notification> Notifications { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

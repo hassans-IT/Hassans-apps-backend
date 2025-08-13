@@ -23,6 +23,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
