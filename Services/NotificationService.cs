@@ -49,7 +49,6 @@ namespace NotificationBackend.Services
 
             _context.Notifications.Remove(notification);
             await _context.SaveChangesAsync();
-            Console.WriteLine($"Notification with Id: {id} deleted successfully");
             return true;
         }
 
