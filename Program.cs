@@ -12,10 +12,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add CORS policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("http://localhost:3000")
+            .WithOrigins("http://localhost:3000",   // dev (http)
+                         "https://app.hassans.com")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -44,7 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowAll");
+app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
 

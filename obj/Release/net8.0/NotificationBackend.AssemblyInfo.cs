@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotificationBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7a19f847a3542b04fd36e308723c074fea3b73c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b447ba6fb4584b7b1601a9da6047143a0c94dda8")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotificationBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotificationBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
