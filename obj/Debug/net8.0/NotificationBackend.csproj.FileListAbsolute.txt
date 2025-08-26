@@ -137,3 +137,7 @@
 /Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/obj/Debug/net8.0/NotificationBackend.pdb
 /Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/obj/Debug/net8.0/NotificationBackend.genruntimeconfig.cache
 /Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/obj/Debug/net8.0/ref/NotificationBackend.dll
+/Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/bin/Debug/net8.0/publish/web.config
+/Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/bin/Debug/net8.0/publish/appsettings.json
+/Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/bin/Debug/net8.0/publish/NotificationBackend.deps.json
+/Users/owais/Desktop/FSD/Hassans Projects/NotificationBackend/bin/Debug/net8.0/publish/NotificationBackend.runtimeconfig.json
